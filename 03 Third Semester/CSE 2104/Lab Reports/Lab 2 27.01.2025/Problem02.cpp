@@ -3,42 +3,44 @@
 using namespace std;
 
 int main() {
-
     int n, x, i, max;
 
-    cout << "Enter the max size of the array : ";
+    cout << "Enter the max size of the array: ";
     cin >> max;
 
     int array[max];
 
-    cout << endl
-        << "Enter the size of an array: ";
+    cout << endl << "Enter the initial size of the array: ";
     cin >> n;
 
-    array[n];
-    cout << endl;
+    if (n > max) {
+        cout << "Error: Initial size cannot be greater than the max size!" << endl;
+        return 1;
+    }
 
-    for (i = 0; i < n; i++)
-    {
+    cout << endl;
+    for (i = 0; i < n; i++) {
         cout << "Element - " << i + 1 << " : ";
         cin >> array[i];
     }
 
-    cout << endl;
-
     int m;
-    cout << "Number of new elements to enter : ";
+    cout << endl << "Number of new elements to enter: ";
     cin >> m;
 
-    for (i = n; i < (n + m); i++)
-    {
-        cout << "Element - " << (i + 1) << " : ";
+    if ((n + m) > max) {
+        cout << "Error: Cannot add ";
+        cout << m << " elements. Exceeds max size of the array!" << endl;
+        return 1;
+    }
+
+    for (i = n; i < (n + m); i++) {
+        cout << "Element - " << i + 1 << " : ";
         cin >> array[i];
     }
 
-    cout << endl;
-    for (i = 0; i < (n + m); i++)
-    {
+    cout << endl << "Updated array:" << endl;
+    for (i = 0; i < (n + m); i++) {
         cout << "Element - " << i + 1 << " : " << array[i] << endl;
     }
 
