@@ -1,7 +1,7 @@
 /*
 5. Write a Java program to find the second highest element of an array.
  */
-package com.mycompany.programs;
+package programs;
 
 import java.util.Scanner;
 
@@ -9,6 +9,8 @@ public class Program5 {
 
     public static void main(String[] args) {
         Scanner inp = new Scanner(System.in);
+
+        System.out.println(1 != 15);
 
         System.out.print("Enter the size of an array : ");
         int size = inp.nextInt();
@@ -37,11 +39,7 @@ public class Program5 {
             }
         }
 
-        if (secondMax == array[0]) {
-            System.out.println("\nNo second highest element found");
-        } else {
-            System.out.println("\nSecond highest element: " + secondMax);
-        }
+        System.out.println("\nSecond highest element: " + secondMax);
 
         inp.close();
     }
