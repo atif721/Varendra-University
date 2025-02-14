@@ -1,7 +1,6 @@
-/*
-7. Write a Java program to calculate the sum of all the prime numbers in a 20 array.
- */
-package com.mycompany.programs;
+/*7. Write a Java program to calculate the
+sum of all the prime numbers in a 2D array. */
+package programs;
 
 import java.util.Scanner;
 
@@ -27,16 +26,15 @@ public class Program7 {
 
         int row, column;
 
-        System.out.print("Input row: ");
+        System.out.print("Enter row in array: ");
         row = sc.nextInt();
 
-        System.out.print("Input column: ");
+        System.out.print("Enter column in array: ");
         column = sc.nextInt();
 
         int[][] array = new int[row][column];
 
         for (int i = 0; i < row; i++) {
-
             System.out.printf("Input %d elements for row %d: ", row, i + 1);
 
             for (int j = 0; j < column; j++) {
@@ -45,7 +43,6 @@ public class Program7 {
         }
 
         int sum = 0;
-
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if (isPrime(array[i][j])) {
@@ -53,8 +50,6 @@ public class Program7 {
                 }
             }
         }
-
         System.out.println("Sum of prime numbers: " + sum);
-
     }
 }

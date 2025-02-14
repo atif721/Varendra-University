@@ -1,7 +1,8 @@
 /*
-2. Write a Java program that takes two arrays as input, calculate the index wise sum of these arrays, and store the result in a third array.
+2. Write a Java program that takes two arrays as input, calculate the
+index wise sum of these arrays, and store the result in a third array.
  */
-package com.mycompany.programs;
+package programs;
 
 import java.util.Scanner;
 
