@@ -1,7 +1,8 @@
 /*
-4. Write a Java program to reverse the elements in an array without using a second array.
+4. Write a Java program to reverse the elements
+in an array without using a second array.
  */
-package com.mycompany.programs;
+package programs;
 
 import java.util.Scanner;
 
@@ -33,7 +34,7 @@ public class Program4 {
             array[size - 1 - i] = temp;
         }
 
-        System.out.println("Reversed array : ");
+        System.out.println("\nReversed array : ");
         for (int i = 0; i < size; i++) {
             System.out.printf("%d ", array[i]);
         }

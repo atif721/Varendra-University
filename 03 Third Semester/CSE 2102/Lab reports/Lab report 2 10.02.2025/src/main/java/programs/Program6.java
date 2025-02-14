@@ -1,7 +1,8 @@
 /*
-6. Write a Java program that calculates the average of an array, excluding the highest and lowest values in the array.
+6. Write a Java program that calculates the average of an
+array, excluding the highest and lowest values in the array.
  */
-package com.mycompany.programs;
+package programs;
 
 import java.util.Scanner;
 

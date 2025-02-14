@@ -1,6 +1,6 @@
 // 1. Write a Java program to find the sum of all odd numbers in an array.
 //
-package com.mycompany.programs;
+package programs;
 
 import java.util.Scanner;
 
