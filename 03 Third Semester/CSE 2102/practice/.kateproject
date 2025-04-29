@@ -1,0 +1,7 @@
+{
+  "formatting": {
+    "formatOnSave": true,
+    "formatterForJson": "jq",
+    "autopep8": { "formatOnSave": false }
+  }
+}

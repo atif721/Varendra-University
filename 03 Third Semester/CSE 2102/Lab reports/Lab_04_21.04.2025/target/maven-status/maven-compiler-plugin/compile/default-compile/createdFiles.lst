@@ -1,0 +1,6 @@
+inheritance\Cat.class
+inheritance\Animal.class
+InnerOut\Outer.class
+InnerOut\Main.class
+InnerOut\Outer$Inner.class
+inheritance\Main.class
