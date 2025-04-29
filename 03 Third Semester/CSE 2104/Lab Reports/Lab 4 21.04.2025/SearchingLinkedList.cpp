@@ -1,25 +1,21 @@
 #include <iostream>
-
 using namespace std;
 
-class Node
-{
+class Node {
 public:
     int data;
-    Node *next;
+    Node* next;
 
-    Node(int value)
-    {
+    Node(int value) {
         data = value;
         next = nullptr;
     }
 };
 
-Node *createLinkedList(int arr[], int size)
-{
-    Node *head = nullptr;
-    Node *temp = nullptr;
-    Node *current = nullptr;
+Node* createLinkedList(int arr [], int size) {
+    Node* head = nullptr;
+    Node* temp = nullptr;
+    Node* current = nullptr;
 
     for (int i = 0; i < size; i++)
     {
@@ -40,9 +36,8 @@ Node *createLinkedList(int arr[], int size)
     return head;
 }
 
-void printLinkedList(Node *head)
-{
-    Node *current = head;
+void printLinkedList(Node* head) {
+    Node* current = head;
     while (current != nullptr)
     {
         cout << current->data << "->";
@@ -51,8 +46,7 @@ void printLinkedList(Node *head)
     cout << "NULL" << endl;
 }
 
-int searchLinkedList(Node *head, int value)
-{
+int searchLinkedList(Node* head, int value) {
     int index = -1;
     int counter = 0;
 
@@ -70,13 +64,12 @@ int searchLinkedList(Node *head, int value)
     return index;
 }
 
-int main()
-{
+int main() {
     int size;
     cout << "Enter the number of elements: ";
     cin >> size;
 
-    int *array = new int[size];
+    int* array = new int[size];
 
     cout << "Enter " << size << " elements: ";
     for (int i = 0; i < size; i++)
@@ -84,7 +77,7 @@ int main()
         cin >> array[i];
     }
 
-    Node *head1 = createLinkedList(array, size);
+    Node* head1 = createLinkedList(array, size);
     printLinkedList(head1);
 
     cout << "Enter element to search: ";
@@ -102,15 +95,15 @@ int main()
         cout << "Element found at index: " << index << endl;
     }
 
-    Node *current = head1;
+    Node* current = head1;
     while (current != nullptr)
     {
-        Node *next = current->next;
+        Node* next = current->next;
         delete current;
         current = next;
     }
 
-    delete[] array;
+    delete [] array;
 
     return 0;
 }
