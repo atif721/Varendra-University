@@ -1,115 +1,94 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Node {
 public:
   int data;
-  Node* next;
+  Node *next;
   Node(int data) {
     this->data = data;
     next = nullptr;
   }
 };
-Node* createLinkedList() {
-  cout << "Enter elements (-1 to end): ";
-  int value;
-  Node* head = nullptr;
-  Node* temp = nullptr;
 
-  while (cin >> value) {
-    Node* newNode = new Node(value);
-    if (head == nullptr) {
-      head = temp = newNode;
-    }
-    else {
-      temp->next = newNode;
-      temp = newNode;
-    }
-  }
+void insertAtFront(Node *&head, int value) {
+  Node *frontNode = new Node(value);
+  frontNode->next = head;
+  head = frontNode;
+}
 
-  return head;
-}
-void printLinkedList(Node* head) {
-  Node* temp = head;
-  while (temp) {
-    cout << temp->data << "->";
-    temp = temp->next;
-  }
-  cout << "NULL" << endl;
-}
-void insertAtFront(Node*& head, int value) {
-  Node* temp = new Node(value);
-  temp->next = head;
-  head = temp;
-}
-void insertAtEnd(Node*& head, int value) {
-  Node* temp = new Node(value);
-  if (head == nullptr) {
-    head = temp;
-  }
-  else {
-    Node* current = head;
-    while (current->next) {
-      current = current->next;
-    }
-    current->next = temp;
-  }
-}
-void insertAtPosition(Node*& head, int value, int position) {
-  if (position <= 1) {
+void inserAtPosition(Node *&head, int pos, int value) {
+  if (pos <= 1) {
     insertAtFront(head, value);
     return;
   }
-  Node* current = new Node(value);
-  Node* temp = head;
-  for (int i = 1; i < position - 1;i++) {
-    if (not temp) {
-      cout << "Limit exceeded" << endl;
-      return;
-    }
+  Node *temp = head;
+  for (int i = 2; i < pos and temp; i++) {
     temp = temp->next;
   }
-  if (not temp) {
-    cout << "Limit exceeded" << endl;
+  if (!temp) {
+    cout << "Limit reached..." << endl;
     return;
   }
+  Node *current = new Node(value);
   current->next = temp->next;
   temp->next = current;
 }
-void deleteLinkedList(Node*& head) {
-  Node* current = head;
-  while (current) {
-    Node* next = current->next;
-    delete current;
-    current = next;
-  }
-  head = nullptr;
-}
-int main() {
-  Node* head = nullptr;
-  head = createLinkedList();
-  printLinkedList(head);
 
-  cin.ignore();
+Node *insertAtEnd(Node *head, int value) {
+  Node *temp = new Node(value);
+  if (!head)
+    return temp;
+
+  Node *current = head;
+  for (; current->next; current = current->next) {
+  }
+  current->next = temp;
+  return head;
+}
+
+void printLinkedList(Node *head) {
+  for (; head; head = head->next) {
+    cout << head->data << "->";
+  }
+  cout << "NULL" << endl;
+}
+
+int main() {
+ cout << "Insert element in LinkedList (e/E to exit) : ";
   int value, pos;
-  cout << "\nInsert a value at front: ";
+
+  Node *head = nullptr;
+  for (; cin >> value; head = insertAtEnd(head, value)) {
+  }
+  printLinkedList(head);
+  cin.clear();
+  cin.ignore();
+
+  cout << "Enter value to insert at FRONT : ";
   cin >> value;
   insertAtFront(head, value);
   printLinkedList(head);
 
-  cin.ignore();
-  cout << "\nInsert a value at end: ";
+  cout << "Enter value to insert at END : ";
   cin >> value;
-  insertAtEnd(head, value);
+  head = insertAtEnd(head, value);
   printLinkedList(head);
 
-  cin.ignore();
-  cout << "\nInsert a value at specific position (starting from 1):\n";
-  cout << "Enter value and position: ";
-  cin >> value >> pos;
-  insertAtPosition(head, value, pos);
+  cout << "Insert value at specific position(start from 1)\n";
+  cout << "Enter POSITION and VALUE : ";
+  cin >> pos >> value;
+  inserAtPosition(head, pos, value);
   printLinkedList(head);
-  deleteLinkedList(head);
+
+  while (head) {
+    Node *next = head->next;
+    delete head;
+    head = next;
+  }
+
+  cout << "After deleting : ";
+  printLinkedList(head);
 
   return 0;
 }

@@ -19,7 +19,7 @@ class Employee {
 class Worker extends Employee {
 
     public void setName() {
-        this.name = "Nisho";
+        this.name = "Afran Nisho";
     }
 
     public void setId() {
