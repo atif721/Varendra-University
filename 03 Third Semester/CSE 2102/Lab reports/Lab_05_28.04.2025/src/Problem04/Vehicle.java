@@ -2,7 +2,7 @@ package Problem04;
 
 class Vehicle {
     public void speedUp() {
-        System.out.println("Speeding up your Vehicle");
+        System.out.println("Vehicle:\n Previous speed: 20km/h, Speeding upto : 40km/h");
     }
 }
 
@@ -11,7 +11,7 @@ class Bicycle extends Vehicle {
 
     @Override
     public void speedUp() {
-        System.out.println("Speeding up your Bike");
+        System.out.println("Bicycle:\n Previous speed: 10km/h, Speeding upto : 15km/h");
     }
 }
 
@@ -20,6 +20,6 @@ class Car extends Vehicle {
 
     @Override
     public void speedUp() {
-        System.out.println("Speeding up your Car");
+        System.out.println("Car:\n Previous speed: 80km/h, Speeding upto : 100km/h");
     }
 }
