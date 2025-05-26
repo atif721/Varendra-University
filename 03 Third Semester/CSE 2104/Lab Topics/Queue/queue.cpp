@@ -11,11 +11,11 @@ public:
     int size;
 
     Queue(int size) {
-        capacity = size;
-        arr = new int[capacity];
         front = 0;
         rear = -1;
+        capacity = size;
         this->size = 0;
+        arr = new int[capacity];
     }
 
     bool isEmpty() {
@@ -95,6 +95,6 @@ int main() {
     q->dequeue();
     q->display();
 
-
+    delete q;
     return 0;
 }
