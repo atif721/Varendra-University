@@ -23,7 +23,7 @@ public:
 //     }
 //     else {
 //         Node* current = head;
-//         while (current->next)
+//         while (current->next)  
 //         {
 //             current = current->next;
 //         }

@@ -1,132 +1,112 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Node {
 public:
   int data;
-  Node* next;
-
+  Node *next;
   Node(int data) {
     this->data = data;
     next = nullptr;
   }
 };
 
-Node* createLinkedList();
-void printLinkedList(Node* head);
-void deleteAtPosition(Node*& head, int position);
-void deleteAtBeginning(Node*& head);
-void deleteAtEnd(Node*& head);
+Node *createNode(Node *head, int value) {
+  Node *temp = new Node(value);
+  if (!head)
+    return temp;
 
-int main() {
-  Node* head = createLinkedList();
-
-  cout << "Original Linked List: ";
-  printLinkedList(head);
-
-  cout << "Deleting node at position 0 (beginning): ";
-  deleteAtBeginning(head);
-  printLinkedList(head);
-
-  int position;
-  cout << "Enter position to delete: ";
-  cin >> position;
-  deleteAtPosition(head, position);
-  printLinkedList(head);
-
-  cout << "Deleting node at the end: ";
-  deleteAtEnd(head);
-  printLinkedList(head);
-
-  return 0;
-}
-
-Node* createLinkedList() {
-  cout << "Enter elements (-1 to end): ";
-  int value;
-  Node* head = nullptr;
-  Node* tail = nullptr;
-
-  while (true) {
-    cin >> value;
-    if (value == -1) break;
-
-    Node* temp = new Node(value);
-    if (head == nullptr) {
-      head = tail = temp;
-    }
-    else {
-      tail->next = temp;
-      tail = temp;
-    }
+  Node *current = head;
+  for (; current->next; current = current->next) {
   }
-
+  current->next = temp;
   return head;
 }
 
-void printLinkedList(Node* head) {
-  Node* temp = head;
-  while (temp != nullptr) {
-    cout << temp->data << " -> ";
-    temp = temp->next;
-  }
-  cout << "NULL" << endl;
-}
-
-void deleteAtBeginning(Node*& head) {
-  if (head == nullptr) {
-    cout << "List is empty!" << endl;
-    return;
-  }
-
-  Node* temp = head;
+void deleteAtFront(Node *&head) {
+  Node *temp = head;
   head = head->next;
   delete temp;
 }
 
-void deleteAtPosition(Node*& head, int position) {
-  if (head == nullptr) {
-    cout << "List is empty!" << endl;
-    return;
-  }
-
-  if (position == 0) {
-    deleteAtBeginning(head);
-    return;
-  }
-
-  Node* temp = head;
-  for (int i = 0; temp != nullptr && i < position - 1; i++) {
-    temp = temp->next;
-  }
-
-  if (temp == nullptr || temp->next == nullptr) {
-    cout << "Position out of range!" << endl;
-    return;
-  }
-
-  Node* nodeToDelete = temp->next;
-  temp->next = temp->next->next;
-  delete nodeToDelete;
-}
-
-void deleteAtEnd(Node*& head) {
-  if (head == nullptr) {
-    cout << "List is empty!" << endl;
-    return;
-  }
-
-  if (head->next == nullptr) {
+void deleteAtEnd(Node *&head) {
+  if (!head->next) {
     delete head;
     head = nullptr;
     return;
   }
+  Node *current = head;
+  while (current->next->next) {
+    current = current->next;
+  }
+  delete current->next;
+  current->next = nullptr;
+}
 
-  Node* temp = head;
-  while (temp->next != nullptr && temp->next->next != nullptr) {
-    temp = temp->next;
+void deleteAtPosition(Node *&head, int pos) {
+
+  if (pos <= 1) {
+    deleteAtFront(head);
+    return;
+  }
+  Node *current = head;
+  for (int i = 2; i < pos && current->next; i++) {
+    current = current->next;
+  }
+  if (!current->next) {
+    cout << "Position out of range" << endl;
+    return;
+  }
+  Node *temp = current->next;
+  current->next = temp->next;
+  delete temp;
+}
+
+void printLinkedList(Node *head) {
+  for (; head; head = head->next) {
+    cout << head->data << "->";
+  }
+  cout << "NULL" << endl;
+}
+
+void deleteLinkedList(Node *&head) {
+  while (head) {
+    deleteAtFront(head);
+  }
+}
+
+int main() {
+  cout << "Insert element in LinkedList (e/E to exit) : ";
+  int value, pos;
+
+  Node *head = nullptr;
+  for (; cin >> value; head = createNode(head, value)) {
+  }
+  printLinkedList(head);
+  cin.clear();
+  cin.ignore();
+
+  if (!head) {
+    cout << "List is empty" << endl;
+    return -1;
   }
 
-  delete temp->next;
-  temp->next = nullptr;
+  cout << "Deleting at FRONT..." << endl;
+  deleteAtFront(head);
+  printLinkedList(head);
+
+  cout << "Deleting at END..." << endl;
+  deleteAtEnd(head);
+  printLinkedList(head);
+
+  cout << "Delete at position... Enter POSITION : ";
+  cin >> pos;
+  deleteAtPosition(head, pos);
+  printLinkedList(head);
+
+  cout << "Deleting entire list..." << endl;
+  deleteLinkedList(head);
+  printLinkedList(head);
+
+  return 0;
 }
