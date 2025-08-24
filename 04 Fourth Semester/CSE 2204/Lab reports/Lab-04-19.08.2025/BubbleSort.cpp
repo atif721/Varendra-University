@@ -1,74 +1,66 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
-void printArray(int* array, int size) {
+void printArray(int *array, int size) {
     cout << "Array Elements are : ";
     for (int i = 0; i < size; i++) {
         cout << array[i] << " ";
     }
     cout << endl;
 }
-
-void bubbleSort(int* array, int n) {
-    bool swapped;
-    int swapCount = 0;
-    int compareCount = 0;
-    for (int i = 0; i < n - 1; i++) {
-        swapped = false;
-        for (int j = 0; j < n - 1; j++) {
+void gentArray(int *array, int n, string type) {
+    srand(time(NULL));
+    for (int i = 0; i < n; i++)
+        array[i] = rand() % 850 + 7;
+    if (type == "average")
+        return;
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - 1 - i; j++)
             if (array[j] > array[j + 1]) {
-                int temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-                swapped = true;
-                swapCount++;
+                swap(array[j], array[j + 1]);
             }
-            compareCount++;
+    if (type == "worst")
+        for (int i = 0; i < n / 2; i++) {
+            swap(array[i], array[n - 1 - i]);
         }
-        if (swapped == false) {
-            break;
-        }
-    }
-    printArray(array, n);
-    cout << "Swapping : " << swapCount << endl;
-    cout << "Comparing : " << compareCount << endl;
 }
-
+void bubbleSort(int *array, int n) {
+    int cntSwap = 0;
+    int cntCompare = 0;
+    for (int i = 0; i < n - 1; i++) {
+        bool swapped = false;
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (array[j] > array[j + 1]) {
+                swap(array[j], array[j + 1]);
+                swapped = true;
+                cntSwap++;
+            }
+            cntCompare++;
+        }
+        if (!swapped)
+            break;
+    }
+    cout << "Swapping : " << cntSwap << endl;;
+    cout << "Comparing : " << cntCompare << endl;
+}
 int main() {
+    string cases;
+    cout << "Case (best, average, worst) ?: ";
+    cin >> cases;
+    int size;
+    cout << "Element Size ? : ";
+    cin >> size;
 
-    // int size;
-    // cout << "Enter the array size : ";
-    // cin >> size;
+    int *array = new int[size];
+    gentArray(array, size, cases);
+    cout << "\nCase: " << cases << " | ";
+    cout << "Size: " << size << endl;
 
-    // int* array = new int[size];
+    printArray(array, size);
+    bubbleSort(array, size);
+    printArray(array, size);
 
-    // cout << "Enter array elements : ";
-    // for (int i = 0; i < size; i++) {
-    //     cin >> array[i];
-    // }
-
-    int array1[] = { 5,6,7,15,36,100 };
-    int array2[] = { 60,50,40,30,20,10 };
-    int array3[] = { 6,4,9,3,11,8,15,12 };
-
-    int size1 = sizeof(array1) / sizeof(array1[0]);
-    int size2 = sizeof(array2) / sizeof(array2[0]);
-    int size3 = sizeof(array3) / sizeof(array3[0]);
-
-    cout << "Before sorting ";
-    printArray(array1, size1);
-    cout << "After sorting ";
-    bubbleSort(array1, size1);
-
-    cout << "Before sorting ";
-    printArray(array2, size2);
-    cout << "After sorting ";
-    bubbleSort(array2, size2);
-
-    cout << "Before sorting ";
-    printArray(array3, size3);
-    cout << "After sorting ";
-    bubbleSort(array3, size3);
-
+    delete[] array;
     return 0;
 }
