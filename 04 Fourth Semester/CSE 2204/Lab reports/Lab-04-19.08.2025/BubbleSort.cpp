@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
-
 void printArray(int *array, int size) {
     cout << "Array Elements are : ";
     for (int i = 0; i < size; i++) {
@@ -43,6 +42,8 @@ void bubbleSort(int *array, int n) {
     }
     cout << "Swapping : " << cntSwap << endl;;
     cout << "Comparing : " << cntCompare << endl;
+    // cout << "After sorting, ";
+    // printArray(array, n);
 }
 int main() {
     string cases;
@@ -57,9 +58,8 @@ int main() {
     cout << "\nCase: " << cases << " | ";
     cout << "Size: " << size << endl;
 
-    printArray(array, size);
+    // printArray(array, size);
     bubbleSort(array, size);
-    printArray(array, size);
 
     delete[] array;
     return 0;
