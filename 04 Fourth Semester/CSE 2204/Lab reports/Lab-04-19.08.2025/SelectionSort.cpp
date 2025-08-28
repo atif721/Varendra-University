@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
-
 void printArray(int *array, int size) {
     cout << "Array Elements are : ";
     for (int i = 0; i < size; i++) {
@@ -32,19 +31,20 @@ void selectionSort(int *array, int n) {
     for (i = 0; i < n - 1; i++) {
         int min = i;
         for (j = i + 1; j < n; j++) {
+            compareCount++;  
             if (array[min] > array[j])
                 min = j;
-            compareCount++;
         }
-        swap(array[i], array[min]);
-        swappingCount++;
+        if (min != i) {  
+            swap(array[i], array[min]);
+            swappingCount++;
+        }
     }
     cout << "Swapping : " << swappingCount << endl;
     cout << "Comparing : " << compareCount << endl;
-    cout << "After sorting, ";
-    printArray(array, n);
+    // cout << "After sorting, ";
+    // printArray(array, n);
 }
-
 int main() {
     string cases;
     cout << "Case (best, average, worst) ?: ";
@@ -58,7 +58,7 @@ int main() {
     cout << "\nCase: " << cases << " | ";
     cout << "Size: " << size << endl;
 
-    printArray(array, size);
+    // printArray(array, size);
     selectionSort(array, size);
 
     delete[] array;
