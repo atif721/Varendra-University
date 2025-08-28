@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
-
 void printArray(int *array, int size) {
     cout << "Array Elements are : ";
     for (int i = 0; i < size; i++) {
@@ -31,18 +30,22 @@ void insertionSort(int *array, int n) {
     for (int i = 1; i < n; i++) {
         int key = array[i];
         int j = i - 1;
-        while (j >= 0 && array[j] > key) {
-            array[j + 1] = array[j];
-            j--;
+        while (j >= 0) {
             compareCount++;
+            if (array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+                shiftingCount++;
+            }
+            else 
+                break;
         }
         array[j + 1] = key;
-        shiftingCount++;
     }
     cout << "Shifting : " << shiftingCount << endl;
     cout << "Comparing : " << compareCount << endl;
-    cout << "After sorting, ";
-    printArray(array, n);
+    // cout << "After sorting, ";
+    // printArray(array, n);
 }
 
 int main() {
@@ -58,7 +61,7 @@ int main() {
     cout << "\nCase: " << cases << " | ";
     cout << "Size: " << size << endl;
 
-    printArray(array, size);
+    // printArray(array, size);
     insertionSort(array, size);
 
     delete[] array;
