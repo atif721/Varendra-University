@@ -1,25 +1,17 @@
 #include <iostream>
 using namespace std;
 
-void printArray(int* array, int n) {
-    cout << "Array elements : ";
-    for (int i = 0; i < n; i++) {
-        cout << array[i];
-    }
-}
-
-void preSortedInerstionSort(int* array, int key, int n) {
+void dynamicInsertionSort(int *array, int key, int currentSize) {
     int i, j;
-    j = n - 1;
-    for (i = n - 1; i >= 0; i++) {
-        while (j >= 0 && key < array[j]) {
-            array[j + 1] = array[j];
-            j--;
-        }
-        array[j + 1] = key;
+    j = currentSize - 1;
+    while (j >= 0 && array[j] > key) {
+        array[j + 1] = array[j];
+        j--;
     }
+    array[j + 1] = key;
+
     cout << "After inserting " << key << " : ";
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i <= currentSize; i++) {
         cout << array[i] << " ";
     }
     cout << endl;
@@ -27,15 +19,30 @@ void preSortedInerstionSort(int* array, int key, int n) {
 
 int main() {
 
-    string condition;
+    char condition;
     int key;
+    int *sortedArray = nullptr;
     int size = 0;
-    int* sortedArray = new int[size];
-    while (cin >> condition) {
-        size++;
-        cout << "Enter array elements : ";
+    while (true) {
+        cout << "Enter array element : ";
         cin >> key;
-        preSortedInerstionSort(sortedArray, key, size);
+        int *newArray = new int[size + 1];
+
+        for (int i = 0; i < size; i++) {
+            newArray[i] = sortedArray[i];
+        }
+
+        dynamicInsertionSort(newArray, key, size);
+        delete[] sortedArray;
+        sortedArray = newArray;
+        size++;
+        cout << endl;
+
+        cout << "Want to continue insertion ? (y/n) : ";
+        cin >> condition;
+
+        if (condition != 'y')
+            break;
     }
 
     delete[] sortedArray;
