@@ -1,45 +1,38 @@
-from math import exp, fabs
+from math import fabs
 
 
-def target_func(y):
-    return y * exp(y) - 1
+def f(x):
+    return x*x*x - 2*x - 5
 
 
-def target_deriv(y):
-    return exp(y) * (1 + y)
+def f_deriv(x):
+    return 3*x*x - 2
 
 
-def newton_solver(func, deriv_func, y_start, max_loops=500, precision=1e-6):
-    if deriv_func(y_start) == 0:
-        print("Zero derivative at starting point. Choose a different guess.")
-        return None
+def newton_raphson(f, f_deriv, x0, max_itr=500, eps=0.05):
+    if (f_deriv(x0) == 0):
+        print("Change the guess!")
+        return
+    itr = 1
+    xr_old = x0
 
-    y_current = y_start
-    for loop in range(1, max_loops + 1):
-        deriv_result = deriv_func(y_current)
-        if deriv_result == 0:
-            print("Derivative became zero. Method cannot proceed.")
-            return None
+    while True:
+        if (f_deriv(xr_old) == 0):
+            print("Change the guess!")
+            return
 
-        y_next = y_current - func(y_current) / deriv_result
-        diff = fabs(y_next - y_current)
-
-        print(f"Loop {loop}: ")
-        print(f"y = {y_next:.4f}, f(y) = {func(y_next):.4f},")
-        print(f"difference = {diff:.4e}\n")
-
-        if diff <= precision:
-            return y_next
-
-        y_current = y_next
-
-    print("Maximum loops reached.")
-    return y_current
+        xr_new = xr_old - (f(xr_old) / f_deriv(xr_old))
+        ae = fabs(xr_new - xr_old)
+        xr_old = xr_new
+        itr += 1
+        if (ae <= eps or itr > max_itr):
+            break
+    return xr_old
 
 
-initial_value = float(input("Enter initial value: "))
-result = newton_solver(target_func, target_deriv, initial_value)
+x0 = float(input("Enter inital guess : "))
 
-if result is not None:
-    print(f"The root of the equation is = {result:.4f}")
-    print(f"The value of f(root) = {target_func(result):.4e}")
+root = newton_raphson(f, f_deriv, x0)
+
+print(f"The root of the given equation is : {root:.5f}")
+print(f"The value of f(root) : {f(root):.5f}")
