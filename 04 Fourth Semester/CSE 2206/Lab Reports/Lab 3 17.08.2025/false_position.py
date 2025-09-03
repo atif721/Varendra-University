@@ -1,7 +1,9 @@
 from math import fabs
 
+
 def f(x):
     return 0.5 * x*x*x - x*x
+
 
 def false_position(f, x, y, max_itr=500, eps=0.05):
     if f(x) * f(y) > 0:
