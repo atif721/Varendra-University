@@ -2,50 +2,45 @@ from math import fabs
 
 
 def f(x):
-    return 0.5*x*x*x - x*x
+    return x**3 + 4*x**2-1
 
 
 def bisection(f, xl, xu, max_itr=500, eps=0.05):
-    if f(xl)*f(xu) > 0:
-        print("Wrong guess!")
+    if f(xl) * f(xu) > 0:
+        print("Invalid interval! f(xl) and f(xu) must have opposite signs.")
         return None
 
-    if f(xl) == 0:
-        return xl
-    if f(xu) == 0:
-        return xu
-
-    itr = 1
     xr_old = (xl + xu) / 2
 
-    while True:
+    for itr in range(1, max_itr + 1):
         if f(xl) * f(xr_old) < 0:
             xu = xr_old
-        elif f(xu) * f(xr_old) < 0:
+        elif f(xl) * f(xr_old) > 0:
             xl = xr_old
         else:
             return xr_old
 
         xr_new = (xl + xu) / 2
-        ae = fabs(xr_new - xr_old)
-        xr_old = xr_new
 
-        itr = itr + 1
-        if ae <= eps or itr > max_itr:
-            break
+        err_midpoint = fabs(xr_new - xr_old)
+
+        if err_midpoint <= eps:
+            return xr_new
+
+        xr_old = xr_new
+        itr += 1
+
     return xr_old
 
 
 te = int(input("Test case : "))
-while te:
-    xl = int(input("xl : "))
-    xu = int(input("xu : "))
+for _ in range(te):
+    xl = float(input("xl : "))
+    xu = float(input("xu : "))
     xr = bisection(f, xl, xu)
 
     if xr is not None:
-        print(f"The root of the function is : {xr:.3f}")
-        print(f"The value of the function is : {f(xr):.3f}")
+        print(f"\nFinal Root = {xr:.6f}")
+        print(f"f(root) = {f(xr):.6f}")
     else:
         print("No root found.")
-
-    te -= 1
