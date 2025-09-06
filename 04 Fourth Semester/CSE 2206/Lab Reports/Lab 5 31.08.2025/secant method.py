@@ -31,7 +31,7 @@ def Secant(f, x0, x1, max_itr=500, eps=0.005):
 
 
 x0 = float(input("Enter value of x0 : "))
-x1 = float(input("Enter value of x0 : "))
+x1 = float(input("Enter value of x1 : "))
 
 xr = Secant(f, x0, x1)
 

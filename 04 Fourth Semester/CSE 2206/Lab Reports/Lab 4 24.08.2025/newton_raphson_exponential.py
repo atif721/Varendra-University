@@ -1,46 +1,36 @@
 from math import exp, fabs
 
 
-def equation(x):
+def f(x):
     return x * exp(x) - 1
 
 
-def derivative(x):
+def f_prime(x):
     return exp(x) * (1 + x)
 
 
-def newton_method(equation, deriv_eq, initial, max_steps=500, tol=1e-6):
-    if deriv_eq(initial) == 0:
-        print("Derivative is zero at initial point. Try another guess.")
-        return None
-
-    current = initial
-    for step in range(1, max_steps + 1):
-        deriv_val = deriv_eq(current)
-        if deriv_val == 0:
-            print("Zero derivative encountered. Method fails.")
+def newton(f, f_prime, x0, tol=1e-6, max_iter=100):
+    for i in range(1, max_iter + 1):
+        if f_prime(x0) == 0:
+            print("Derivative is zero. Try another guess.")
             return None
 
-        next_val = current - equation(current) / deriv_val
-        err = fabs(next_val - current)
+        x1 = x0 - f(x0) / f_prime(x0)
+        err = fabs(x1 - x0)
 
-        print(f"Step {step}: ")
-        print(f"x = {next_val:.4f}, f(x) = {equation(next_val):.4f},")
-        print(f"error = {err:.4e}\n")
+        print(f"Iter {i}: x={x1:.6f}, f(x)={f(x1):.6f}, err={err:.2e}")
 
-        if err <= tol:
-            return next_val
+        if err < tol:
+            return x1
+        x0 = x1
 
-        current = next_val
-
-    print("Max steps reached.")
-    return current
+    print("Max iterations reached.")
+    return x0
 
 
-if __name__ == "__main__":
-    start_guess = float(input("Enter starting guess: "))
-    solution = newton_method(equation, derivative, start_guess)
+guess = float(input("Enter starting guess: "))
+root = newton(f, f_prime, guess)
 
-    if solution is not None:
-        print(f"The root of the equation is = {solution:.4f}")
-        print(f"The value of f(root) = {equation(solution):.4e}")
+if root is not None:
+    print(f"\nRoot ≈ {root:.6f}")
+    print(f"f(root) ≈ {f(root):.3e}")
