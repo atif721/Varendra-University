@@ -9,7 +9,7 @@ int main() {
   int m = S1.length(); // length of S1
   int n = S2.length(); // length of S2
 
-  int table[100][100]; // DP table
+  int table[m + 1][n + 1]; // DP table
 
   // Initialize table with 0
   for (int i = 0; i <= m; i++) {
@@ -19,7 +19,7 @@ int main() {
   }
 
   // Fill the DP table
-  for (int i = 1; i <=m; i++) {
+  for (int i = 1; i <= m; i++) {
     for (int j = 1; j <= n; j++) {
       if (S1[i - 1] == S2[j - 1]) {
         table[i][j] = table[i - 1][j - 1] + 1;
@@ -38,7 +38,8 @@ int main() {
 
   // Reconstruct LCS string
   string lcs = "";
-  int i = m, j = n;
+  int i = m;
+  int j = n;
 
   while (i > 0 && j > 0) {
     if (S1[i - 1] == S2[j - 1]) {
