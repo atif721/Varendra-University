@@ -8,7 +8,7 @@ void sortActivities(int a[], int s[], int f[], int n) {
         swap(f[j], f[j + 1]);
         swap(s[j], s[j + 1]);
         swap(a[j], a[j + 1]);
-      }
+      } 
     }
   }
 }
