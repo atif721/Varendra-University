@@ -30,8 +30,3 @@ bin/
 .DS_Store
 
 # Big academic files
-*.pdf
-*.docx
-*.pptx
-*.zip
-*.rar
