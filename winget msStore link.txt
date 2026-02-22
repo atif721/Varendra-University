@@ -1,0 +1,2 @@
+# enable ms store command | wsreset -i (run powershell as administrator then run the command)
+https://apps.microsoft.com/detail/9nblggh4nns1?ocid=webpdpshare
