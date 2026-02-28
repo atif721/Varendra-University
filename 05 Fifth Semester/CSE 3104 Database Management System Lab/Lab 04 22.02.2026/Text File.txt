@@ -1,0 +1,17 @@
+| Style | Format                     | Example Output          | Region                 |
+| ----- | -------------------------- | ----------------------- | ---------------------- |
+| 100   | Mon DD YYYY HH:MIAM        | Feb 28 2026 10:30AM     | Default                |
+| 101   | MM/DD/YYYY                 | 02/28/2026              | 🇺🇸 US                |
+| 102   | YYYY.MM.DD                 | 2026.02.28              | ANSI                   |
+| 103   | DD/MM/YYYY                 | 28/02/2026              | 🇬🇧 UK                |
+| 104   | DD.MM.YYYY                 | 28.02.2026              | German                 |
+| 105   | DD-MM-YYYY                 | 28-02-2026              | Italian                |
+| 106   | DD Mon YYYY                | 28 Feb 2026             |                        |
+| 107   | Mon DD, YYYY               | Feb 28, 2026            |                        |
+| 108   | HH:MI:SS                   | 14:30:15                | Time only              |
+| 109   | Mon DD YYYY HH:MI:SS:MMMAM | With milliseconds       |                        |
+| 110   | MM-DD-YYYY                 | 02-28-2026              | US dashed              |
+| 111   | YYYY/MM/DD                 | 2026/02/28              | Japan                  |
+| 112   | YYYYMMDD                   | 20260228                | ISO (Best for sorting) |
+| 120   | YYYY-MM-DD HH:MI:SS        | 2026-02-28 14:30:15     | ODBC                   |
+| 121   | With milliseconds          | 2026-02-28 14:30:15.123 |                        |
