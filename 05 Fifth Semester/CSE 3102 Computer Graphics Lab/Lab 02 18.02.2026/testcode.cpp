@@ -1,35 +1,40 @@
 #include <GL/glut.h>
-float r = 1.0, g = 0.0, b = 0.0;
+#include <bits/stdc++.h>
+using namespace std;
 
 void display() {
+  glClearColor(1, 1, 1, 1);
   glClear(GL_COLOR_BUFFER_BIT);
-  glColor3f(r, g, b);
-  glRectf(-0.8, -0.8, 0.8, 0.8);  // Preview square
-  glutSwapBuffers();
-}
 
-// glLineWidth(4.0);
-// glBegin(GL_LINES);
-// glVertex2f(xs, ys);
-// glVertex2f(xe, ye);
+  glPointSize(3.0);
+  glColor3f(0.6, 0.1, 1.0);
 
-void mouse(int btn, int state, int x, int y) {
-  if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-    // Example: Map x to red (0-1), y inverted for screen coords
-    r = (float)x / glutGet(GLUT_WINDOW_WIDTH);
-    g = 1.0 - (float)y / glutGet(GLUT_WINDOW_HEIGHT);
-    b = 0.5;  // Fixed or add slider
-    glutPostRedisplay();
+  float xs = -0.7, ys = 0.7;
+  float xe = -0.1, ye = 0.1;
+
+  float x = xs;
+  float y = ys;
+
+  float m = (ye - ys) / (xe - xs);
+  cout << "Value of m : " << m << endl;
+
+  glBegin(GL_POINTS);
+  while (x <= xe) {
+    glVertex2f(x, y);
+    x += 0.001;
+    y -= 0.001;   // since slope = -1
   }
+  glEnd();
+
+  glFlush();
 }
 
 int main(int argc, char **argv) {
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-  glutInitWindowSize(800, 600);
-  glutCreateWindow("GLUT Color Picker");
+  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+  glutInitWindowSize(500, 500);
+  glutCreateWindow("Diagonal Line m = -1");
   glutDisplayFunc(display);
-  glutMouseFunc(mouse);
   glutMainLoop();
   return 0;
 }
