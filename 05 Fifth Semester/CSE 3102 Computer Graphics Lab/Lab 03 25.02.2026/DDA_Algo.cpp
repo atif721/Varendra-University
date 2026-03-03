@@ -1,6 +1,5 @@
 #include <GL/glut.h>
-#include <iostream>
-#include <cmath>
+#include<bits/stdc++.h>
 using namespace std;
 
 int xs, ys, xe, ye;
@@ -12,17 +11,13 @@ void display() {
   glPointSize(2.0);
   glBegin(GL_POINTS);
 
-  float m = (float)(ye - ys) / float(xe - xs);
+  float m = (float)(ye - ys) / (xe - xs);
   cout << "Slope m: " << m << endl;
 
   if (abs(m) <= 1) {
-    if (xs > xe) {
-      swap(xs, xe);
-      swap(ys, ye);
-    }
+    if (xs > xe) { swap(xs, xe); swap(ys, ye); }
 
-    float X = xs;
-    float Y = ys;
+    float X = xs, Y = ys;
 
     while (X <= xe) {
       glVertex2i(round(X), round(Y));
@@ -31,13 +26,9 @@ void display() {
     }
   }
   else {
-    if (ys > ye) {
-      swap(xs, xe);
-      swap(ys, ye);
-    }
+    if (ys > ye) { swap(xs, xe); swap(ys, ye); }
 
-    float X = xs;
-    float Y = ys;
+    float X = xs, Y = ys;
 
     while (Y <= ye) {
       glVertex2i(round(X), round(Y));
@@ -48,12 +39,6 @@ void display() {
 
   glEnd();
   glFlush();
-}
-
-void init() {
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(0.0, 640.0, 0.0, 480.0);
 }
 
 int main(int argc, char **argv) {
@@ -67,7 +52,9 @@ int main(int argc, char **argv) {
   glutInitWindowSize(640, 480);
   glutCreateWindow("DDA Line Drawing Algorithm");
 
-  init();
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluOrtho2D(0.0, 640.0, 0.0, 480.0);
   glutDisplayFunc(display);
   glutMainLoop();
 
