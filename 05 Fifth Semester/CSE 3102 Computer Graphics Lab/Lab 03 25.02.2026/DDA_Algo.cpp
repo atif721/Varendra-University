@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
   glutInitWindowSize(640, 480);
-  glutCreateWindow("DDA Line Drawing Algorithm");
+  glutCreateWindow("DDA Line Drawing Algorithm m<1");
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
