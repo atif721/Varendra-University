@@ -1,72 +1,69 @@
 #include <GL/glut.h>
+#include <iostream>
 
-int xc = 0, yc = 0, r = 100;
+using namespace std;
 
-// Draw 8 symmetric points
-void drawCirclePoints(int x, int y)
-{
-    glVertex2i(xc + x, yc + y);
-    glVertex2i(xc - x, yc + y);
-    glVertex2i(xc + x, yc - y);
-    glVertex2i(xc - x, yc - y);
-    glVertex2i(xc + y, yc + x);
-    glVertex2i(xc - y, yc + x);
-    glVertex2i(xc + y, yc - x);
-    glVertex2i(xc - y, yc - x);
+int radiusVal;
+
+void drawCirclePoints(int cx, int cy, int px, int py) {
+    glVertex2i(cx + px, cy + py);
+    glVertex2i(cx + py, cy + px);
+    glVertex2i(cx + py, cy - px);
+    glVertex2i(cx + px, cy - py);
+    glVertex2i(cx - px, cy - py);
+    glVertex2i(cx - py, cy - px);
+    glVertex2i(cx - py, cy + px);
+    glVertex2i(cx - px, cy + py);
 }
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(4);
 
-    glColor3f(0.0, 0.0, 0.0); // black color
-    glPointSize(2.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-10, 620, -10, 450);
+    // gluOrtho2D(0.0, 500.0, 0.0, 500.0);
+
+    int xPos = 0;
+    int yPos = radiusVal;
+    int decision = 1 - radiusVal;
+
+    int centerX = radiusVal;
+    int centerY = radiusVal;
 
     glBegin(GL_POINTS);
+    glColor3f(0.2f, 0.8f, 0.5f);
 
-    int x = 0;
-    int y = r;
+    while (xPos <= yPos) {
+        drawCirclePoints(centerX, centerY, xPos, yPos);
 
-    int p = 1 - r; // initial decision parameter
-
-    while (x <= y)
-    {
-        drawCirclePoints(x, y);
-
-        x++;
-
-        if (p < 0)
-        {
-            p = p + 2 * x + 1;
+        if (decision < 0) {
+            decision += (2 * xPos) + 3;
+        } else {
+            decision += (2 * xPos) - (2 * yPos) + 5;
+            yPos--;
         }
-        else
-        {
-            y--;
-            p = p + 2 * x - 2 * y + 1;
-        }
+        xPos++;
     }
 
     glEnd();
     glFlush();
 }
 
-void init() {
-    glClearColor(1.0, 1.0, 1.0, 1.0); // white background
-    gluOrtho2D(-250, 250, -250, 250); // coordinate system
-}
-
 int main(int argc, char **argv) {
-    // You can change values here
-    xc = 0;
-    yc = 0;
-    r = 100;
+    cout << "Radius: ";
+    cin >> radiusVal;
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("Midpoint Circle using OpenGL");
 
-    init();
+    glutInitWindowSize(620, 450);
+    glutInitWindowPosition(400, 100);
+
+    glutCreateWindow("Circle Drawing - Midpoint Method");
+
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glutDisplayFunc(display);
     glutMainLoop();
 
