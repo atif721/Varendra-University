@@ -23,7 +23,6 @@ void display() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-10, 620, -10, 450);
-    // gluOrtho2D(0.0, 500.0, 0.0, 500.0);
 
     int xPos = 0;
     int yPos = radiusVal;
