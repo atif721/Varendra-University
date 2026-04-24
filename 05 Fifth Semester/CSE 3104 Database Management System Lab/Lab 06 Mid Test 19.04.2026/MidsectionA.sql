@@ -95,3 +95,10 @@ GO
 --   DATEDIFF(MONTH, d.JoinDate, GETDATE()) AS Experience_total_months
 -- FROM Drivers d;
 
+-- Question-3
+-- SELECT
+--   tr.TripID,
+--   tr.DestinationCity,
+--   ROUND(tr.TripFare * 0.15,0) AS Bonus
+-- FROM Triplogs tr
+-- WHERE tr.DistanceKM >300
