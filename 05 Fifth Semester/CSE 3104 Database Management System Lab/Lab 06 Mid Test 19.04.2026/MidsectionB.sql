@@ -86,3 +86,28 @@
 -- FROM Developers
 -- WHERE DATEDIFF(MONTH, JoinDate, GETDATE()) > 24
 
+-- Question-3
+-- SELECT d.DevName, d.Department, d.BaseSalary
+-- FROM Developers d
+-- ORDER BY BaseSalary DESC;
+
+-- Question-4
+-- SELECT
+--   p.ProjectID,
+--   COUNT(d.DevID) AS TotalDevelopers,
+--   SUM(pa.AllocHours) AS TotalAllocHours
+-- FROM Developers d
+--   JOIN ProjectAllocations pa ON pa.DevID = d.DevID
+--   JOIN Project p ON p.ProjectID = pa.ProjectID
+-- GROUP BY p.ProjectID
+-- HAVINg SUM(pa.AllocHours)>150
+-- ORDER BY TotalAllocHours DESC
+
+-- Question-5
+-- ALTER TABLE Developers
+-- ADD CONSTRAINT UniqueDevMail UNIQUE(Email);
+-- ALTER TABLE Developers
+-- ADD CONSTRAINT CheckBaseSalary CHECK(BaseSalary>45000)
+
+SELECT *
+FROM Developers
