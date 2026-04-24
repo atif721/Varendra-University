@@ -89,3 +89,9 @@ GO
 -- SELECT BaseSalary
 -- FROM Drivers
 
+-- Question-2
+-- SELECT
+--   UPPER(d.DriverName) AS DriverNameUpper,
+--   DATEDIFF(MONTH, d.JoinDate, GETDATE()) AS Experience_total_months
+-- FROM Drivers d;
+
