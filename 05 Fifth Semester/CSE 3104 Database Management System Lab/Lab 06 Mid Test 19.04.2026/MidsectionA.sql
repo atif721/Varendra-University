@@ -77,4 +77,15 @@ GO
 --   (109, 10, 'Rajshahi', 280, 5400, '2023-10-15'),
 --   (110, 6, 'Chattogram', 450, 8300, '2023-10-18');;
 
+-- Question-1
+-- SELECT BaseSalary
+-- FROM Drivers
+
+-- UPDATE Drivers
+-- SET BaseSalary = BaseSalary * 1.12
+-- WHERE VehicleType = 'Van'
+--   AND JoinDate < '2022';
+
+-- SELECT BaseSalary
+-- FROM Drivers
 
