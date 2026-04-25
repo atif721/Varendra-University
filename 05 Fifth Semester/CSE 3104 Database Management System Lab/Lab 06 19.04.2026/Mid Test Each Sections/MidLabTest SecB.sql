@@ -110,6 +110,3 @@ Go
 -- ADD CONSTRAINT UniqueDevMail UNIQUE(Email);
 -- ALTER TABLE Developers
 -- ADD CONSTRAINT CheckBaseSalary CHECK(BaseSalary>45000)
-
-SELECT *
-FROM Developers

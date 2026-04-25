@@ -89,3 +89,51 @@
 -- 15. Write a SQL query to find members who have never borrowed any book written by 'Cormen'.
 
 
+USE Final
+Go
+
+-- CREATE TABLE Books
+-- (
+--   BookID VARCHAR(10) PRIMARY KEY,
+--   Title VARCHAR(50),
+--   Author VARCHAR(50),
+--   Year DATE,
+--   Price INT
+-- )
+
+-- CREATE TABLE Members
+-- (
+--   MemberID VARCHAR(10) PRIMARY KEY,
+--   Name VARCHAR(50),
+--   Email VARCHAR(50),
+--   JoinDate DATE,
+--   MembershipType VARCHAR(10)
+-- )
+
+-- CREATE TABLE BorrowRecords
+-- (
+--   RecordID VARCHAR(10) PRIMARY KEY,
+--   BookID VARCHAR(10),
+--   MemberID VARCHAR(10),
+--   IssueDate DATE,
+--   ReturnDate DATE,
+--   Status VARCHAR(20),
+--   FOREIGN KEY (BookID) REFERENCES  Books(BookID),
+--   FOREIGN KEY (MemberID) REFERENCES  Members(MemberID)
+-- )
+
+INSERT INTO Books
+VALUES(
+
+)
+
+INSERT INTO Members
+VALUES(
+
+)
+
+INSERT INTO BorrowRecords
+VALUES(
+
+)
+
