@@ -102,7 +102,7 @@ Go
 --   JOIN ProjectAllocations pa ON pa.DevID = d.DevID
 --   JOIN Project p ON p.ProjectID = pa.ProjectID
 -- GROUP BY p.ProjectID
--- HAVINg SUM(pa.AllocHours)>150
+-- HAVING SUM(pa.AllocHours)>150
 -- ORDER BY TotalAllocHours DESC
 
 -- Question-5
