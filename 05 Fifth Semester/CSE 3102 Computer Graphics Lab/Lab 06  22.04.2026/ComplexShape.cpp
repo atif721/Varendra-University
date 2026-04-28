@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
   glutInitWindowSize(800, 600);
-  glutCreateWindow("DDA Line Drawing Algorithm m<1");
+  glutCreateWindow("Composite Geometric Shape (Ice Cream Cone)");
   glMatrixMode(GL_PROJECTION);
 
   glLoadIdentity();
