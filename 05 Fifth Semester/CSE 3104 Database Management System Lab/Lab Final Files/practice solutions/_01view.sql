@@ -89,31 +89,31 @@ GO
 -- STORED PROCEDURE: Insert orders data
 -- =============================================
 
-CREATE PROCEDURE sp_InsertOrders
-AS
-BEGIN
-  INSERT INTO orders
-    (ord_no, purch_amt, ord_date, customer_id, salesman_id)
-  VALUES
-    (70001, 150.5, '2012-10-05', 3005, 5002),
-    (70009, 270.65, '2012-09-10', 3001, 5005),
-    (70002, 65.26, '2012-10-05', 3002, 5001),
-    (70004, 110.5, '2012-08-17', 3009, 5003),
-    (70007, 948.5, '2012-09-10', 3005, 5002),
-    (70005, 2400.6, '2012-07-27', 3007, 5001),
-    (70008, 5760.0, '2012-09-10', 3002, 5001),
-    (70010, 1983.43, '2012-10-10', 3004, 5006),
-    (70003, 2480.4, '2012-10-10', 3009, 5003),
-    (70012, 250.45, '2012-06-27', 3008, 5002),
-    (70011, 75.29, '2012-08-17', 3003, 5007),
-    (70013, 3045.6, '2012-04-25', 3002, 5001);
+-- CREATE PROCEDURE sp_InsertOrders
+-- AS
+-- BEGIN
+--   INSERT INTO orders
+--     (ord_no, purch_amt, ord_date, customer_id, salesman_id)
+--   VALUES
+--     (70001, 150.5, '2012-10-05', 3005, 5002),
+--     (70009, 270.65, '2012-09-10', 3001, 5005),
+--     (70002, 65.26, '2012-10-05', 3002, 5001),
+--     (70004, 110.5, '2012-08-17', 3009, 5003),
+--     (70007, 948.5, '2012-09-10', 3005, 5002),
+--     (70005, 2400.6, '2012-07-27', 3007, 5001),
+--     (70008, 5760.0, '2012-09-10', 3002, 5001),
+--     (70010, 1983.43, '2012-10-10', 3004, 5006),
+--     (70003, 2480.4, '2012-10-10', 3009, 5003),
+--     (70012, 250.45, '2012-06-27', 3008, 5002),
+--     (70011, 75.29, '2012-08-17', 3003, 5007),
+--     (70013, 3045.6, '2012-04-25', 3002, 5001);
 
-  PRINT 'Orders data inserted.';
-END;
-GO
+--   PRINT 'Orders data inserted.';
+-- END;
+-- GO
 
-EXEC sp_InsertOrders;
-GO
+-- EXEC sp_InsertOrders;
+-- GO
 
 -- Question-1
 CREATE OR ALTER VIEW vw_NY_Salesmen
@@ -210,7 +210,7 @@ AS
   )
 GO
 SELECT *
-FROM vw_highest_Salesman
+FROM vw_highest_Salesman;
 GO
 
 -- Question-8
@@ -229,8 +229,124 @@ AS
   GROUP BY o.ord_date, s.name
   HAVING COUNT(*) >= 3;
 GO
-
 SELECT *
-FROM vw_highest_Salesman_3d
+FROM vw_highest_Salesman_3d;
+GO
 
 -- QUestion-9
+CREATE VIEW vw_allCustomer_hGrade
+AS
+  SELECT *
+  FROM customer
+  WHERE  grade=(SELECT MAX(grade)
+  FROM customer);
+GO
+SELECT *
+FROM vw_allCustomer_hGrade;
+GO
+
+-- Question-10
+CREATE VIEW vw_salesman_eachcity
+AS
+  SELECT s.city,
+    COUNT(*) AS Total_Salesman
+  FROM salesman s
+  GROUP BY s.city;
+GO
+
+SELECT *
+FROM vw_salesman_eachcity;
+GO
+
+-- Question-11
+CREATE VIEW vw_AllSalesman_orders
+AS
+  SELECT s.name AS Salesman_Name,
+    AVG(o.purch_amt) AS Average_Order_Amnt,
+    SUM(o.purch_amt) AS Total_Order
+  FROM orders o
+    JOIN salesman s ON o.salesman_id = s.salesman_id
+  GROUP BY s.name;
+GO
+
+SELECT *
+FROM vw_AllSalesman_orders;
+GO
+
+-- Question-12
+CREATE VIEW vw_AllSalesman_withCustomer
+AS
+  SELECT s.salesman_id,
+    s.name AS Salesman_Name,
+    COUNT(ct.customer_id) AS Total_Customer
+  FROM salesman s
+    JOIN customer ct ON s.salesman_id = ct.salesman_id
+  GROUP BY s.salesman_id, s.name
+  HAVING COUNT(ct.customer_id) > 1;
+GO
+
+SELECT *
+FROM vw_AllSalesman_withCustomer;
+GO
+
+-- Question-13
+CREATE VIEW vw_salesmanCustomer_pair
+AS
+  SELECT
+    ct.cust_name AS Customer_Name,
+    s.name AS Salesman_Name,
+    ct.city
+  FROM customer ct
+    JOIN salesman s ON ct.salesman_id = s.salesman_id
+  WHERE ct.city = s.city;
+GO
+
+SELECT *
+FROM vw_AllSalesman_withCustomer;
+GO
+
+-- Question-14
+CREATE VIEW vw_totalOrders_inaDay
+AS
+  SELECT
+    o.ord_date AS Order_Date,
+    COUNT(o.ord_no) AS Total_Orders
+  FROM orders o
+  GROUP BY o.ord_date;
+GO
+
+SELECT *
+FROM vw_totalOrders_inaDay;
+GO
+
+-- Question-15
+CREATE VIEW vw_ordersOnSingleDay
+AS
+  SELECT
+    o.ord_date AS Order_Date,
+    s.name AS Salesman_Name
+  FROM orders o
+    JOIN salesman s ON o.salesman_id = s.salesman_id
+  WHERE o.ord_date = '2012-10-10' ;
+GO
+
+SELECT *
+FROM vw_ordersOnSingleDay;
+GO
+
+-- Question-16
+CREATE VIEW vw_ordersOnBothDay
+AS
+  SELECT
+    o.ord_date AS Order_Date,
+    s.name AS Salesman_Name
+  FROM orders o
+    JOIN salesman s ON o.salesman_id = s.salesman_id
+  WHERE o.ord_date = '2012-10-10' OR o.ord_date = '2012-08-17';
+GO
+
+SELECT *
+FROM vw_ordersOnBothDay;
+GO
+
+
