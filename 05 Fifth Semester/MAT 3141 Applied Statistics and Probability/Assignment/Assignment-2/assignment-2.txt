@@ -1,0 +1,49 @@
+DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING
+ASSIGNEMENT-2 ON MAT 3141 (Applied Statistics & Probability)
+Full Marks: 15
+Instructions:
+1. Solve all problems using any programming language such as Python/ R/ Java/ C++ or
+MATLAB
+2. Programs must include proper input, processing, graphical visualization, and
+interpretation of results.
+3. Submit source code, output screenshots, and brief explanations.
+
+1. a) A machine learning research team collected data on training time (hours) and model accuracy
+(%) for different AI models.
+
+Model 1 2 3 4 5 6 7 8
+Training Time (hrs) 2 3 4 5 6 7 8 9
+Accuracy (%) 60 65 68 72 78 82 88 91
+
+i) Write a program to draw a scatter plot.
+ii) Calculate the Karl’s Pearson correlation coefficient.
+iii) Interpret the strength and direction of the relationship.
+iv) Display all results using programming output and graphs.
+
+b) The following data represent GPU usage cost (in thousand TK.) and corresponding AI service
+revenue (in thousand TK.).
+GPU Cost 15 15 20 25 30 35
+Revenue 25 35 45 50 60 72
+i) Develop a linear regression model using programming.
+ii) Plot the regression line with the dataset.
+iii) Predict revenue when GPU cost = 28 thousand TK.
+iv) Interpret the regression model with proper stat.
+
+2. a) A software company recorded sprint completion times (days) for two development teams.
+Sprint 1 2 3 4 5 6
+Team X 12 13 12 11 14 13
+Team Y 8 10 12 15 18 20
+
+i) Compare variability using QD, CQD, SD and CV.
+ii) Determine which team is more consistent.
+iii) Explain the importance of consistency in Agile development.
+iv) Show program output and interpretation.
+
+b) An IoT-based smart agriculture system recorded soil moisture sensor values.
+Reading 1 2 3 4 5 6 7 8 9 10
+Moisture (%) 35 36 37 35 38 39 36 37 90 38
+
+i) Draw a box plot using programming.
+ii) Detect outliers using the IQR method.
+iii) Interpret the effect of abnormal readings on IoT decision systems.
+iv) Display graphical and numerical outputs.
