@@ -1,6 +1,3 @@
--- ==========================================
--- FILE: 241311051_B.sql
--- ==========================================
 -- TABLE CREATION & DATA INSERTION
 CREATE TABLE Salesman (
   Salesman_ID INT PRIMARY KEY,
@@ -52,7 +49,10 @@ FROM
   JOIN Salesman S ON O.Salesman_ID = S.Salesman_ID;
 
 GO
-SELECT * FROM Sales_Report;
+SELECT
+  *
+FROM
+  Sales_Report;
 
 GO
   -- 2
