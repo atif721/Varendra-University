@@ -348,5 +348,3 @@ GO
 SELECT *
 FROM vw_ordersOnBothDay;
 GO
-
-
