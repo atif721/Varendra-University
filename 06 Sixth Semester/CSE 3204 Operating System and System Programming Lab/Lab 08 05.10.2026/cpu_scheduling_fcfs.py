@@ -7,7 +7,7 @@ for i in range(1, n + 1):
                  int(input("Burst Time: "))])
 
 
-def line(k=30): return print("-" * k)
+def line(k=20): return print("-" * k)
 
 
 print("\n\nProcess List")
@@ -26,12 +26,12 @@ for pid, at, bt in sorted(procs, key=lambda x: x[1]):
     t = ct
 
 print("\n\nFCFS Scheduling Table")
-line(55)
+line(50)
 print("PID\tAT\tBT\tST\tCT\tTAT\tWT")
-line(55)
+line(50)
 for r in result:
     print(*r, sep="\t")
-line(55)
+line(50)
 
 print(f"\nAverage Waiting Time    : {sum(r[6] for r in result) / n:.2f}")
 print(f"Average Turnaround Time : {sum(r[5] for r in result) / n:.2f}")
