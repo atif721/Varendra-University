@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Concept 2.1: Document Boilerplate & Metadata -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Concept 3.1: External Stylesheet Link -->
+  <link rel="stylesheet" href="mystyle.css">
+
+  <!-- Concept 3.1: Internal Style Block -->
+  <style>
+    /* Concept 3.2: Element/Type Selector */
+    /* Concept 3.3: Typography (font-family, size, weight, line-height, text-align, text-indent), Colors, and Backgrounds */
+    /* Concept 3.4: Box Model (border shorthand, border-radius) */
+    p {
+      color: red;
+      color: #f71e1e;
+      color: rgb(0, 0, 255);
+      background-color: aqua;
+      background-image: url("bi.png");
+
+      font-family: Arial;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 1.5;
+
+      text-align: justify;
+      text-decoration: none;
+      text-transform: capitalize;
+      text-indent: 50px;
+
+      border-width: 2px;
+      border-style: dashed;
+      border-color: red;
+      border: 2px solid red;
+      border-radius: 10px;
+    }
+
+    /* Concept 3.2: Class Selector */
+    .paragraph {
+      color: green;
+    }
+
+    /* Concept 3.2: Grouping Selector */
+    h1,
+    h2,
+    h3 {
+      color: red;
+      font-size: 20px;
+    }
+
+    /* Concept 3.2: ID Selector */
+    #heading3 {
+      color: blue;
+      font-size: 45px;
+    }
+
+    /* Concept 3.4: Box Model (dimensions, margins, padding, border) */
+    /* Concept 3.6: Overflow Management (overflow, overflow-x, overflow-y) */
+    div {
+      border: 1px solid blue;
+      width: 50px;
+      height: 50px;
+      margin-left: 30px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+      padding: 20px;
+      overflow: auto;
+      overflow-x: scroll;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Grouping & ID Selectors Target Elements -->
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>heading 3</h3>
+  <h3 id="heading3">heading 3-2</h3>
+  <br>
+
+  <!-- Class Selector Target Element -->
+  <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad commodi quas distinctio consectetur
+    explicabo aspernatur esse labore quia ipsa tempore tempora itaque, provident excepturi et? Quidem expedita soluta
+    optio laudantium.</p>
+
+  <!-- Concept 3.1: Inline Style Implementation -->
+  <p style="color: blue;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus repellendus, eligendi ratione
+    nostrum exercitationem nesciunt. Explicabo quas expedita aut voluptate labore sunt odit. Quod, consequuntur ipsam
+    porro dolorem deserunt ut.</p>
+
+  <!-- Concept 3.4 & 3.6: Box Model Container with Overflow Management -->
+  <div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  </div>
+
+  <br><br>
+
+  <!-- Concept 2.2: Tabular Data Representation -->
+  <table border="1" width="50%">
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Mobile</th>
+    </tr>
+    <tr>
+      <td>Mr A</td>
+      <td>112233</td>
+      <td>0171077777</td>
+    </tr>
+    <tr>
+      <td>Mr B</td>
+      <td>445566</td>
+      <td>0191077777</td>
+    </tr>
+  </table>
+
+  <br><br>
+
+  <!-- Concept 2.3: HTML Forms and User Input Controls -->
+  <form action="" method="POST" enctype="multipart/form-data">
+    Name: <br>
+    <input type="text" name="fname" value="Mr" required> <br>
+    <input type="hidden" name="lname" value="A" required> <br>
+    Email: <br>
+    <input type="email" name="" value="" placeholder="Email" required> <br>
+    Mobile: <br>
+    <input type="number" name="" value=""> <br>
+    DOB: <br>
+    <input type="date" name="" value=""> <br>
+    Password: <br>
+    <input type="password" name="" value=""> <br>
+    Gender: <br>
+    <input type="radio" name="gender" value="" checked> Male
+    <input type="radio" name="gender" value=""> Female <br>
+    Courses: <br>
+    <input type="checkbox" name="cr[]" value="" checked> CSE 3210
+    <input type="checkbox" name="cr[]" value=""> CSE 3209 <br>
+    Document: <br>
+    <input type="file" name=""> <br>
+    address: <br>
+    <textarea name="" rows="5" cols="30"> </textarea> <br>
+    District: <br>
+    <select name="dist">
+      <option>Select your district</option>
+      <option value="raj">Rajshahi</option>
+      <option value="dha">Dhaka</option>
+    </select> <br><br>
+
+    <input type="reset" value="clear">
+    <input type="submit" name="sub" value="Add">
+  </form>
+
+</body>
+
+</html>
+
+<!-- ```[cite: 1, 2]
+
+```css
+/* mystyle.css (Concept 3.1: External Stylesheet File) */
+p {
+color: green;
+font-style: italic;
+}
+```[cite: 4] -->
