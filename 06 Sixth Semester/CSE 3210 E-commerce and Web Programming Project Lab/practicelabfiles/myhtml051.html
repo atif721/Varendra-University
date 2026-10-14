@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Practice</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #eeeeee;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .main_container {
+        background-color: #e0f2cd;
+        border: 2px solid #333;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .sidenav {
+        width: 250px;
+        border: 2px solid #333;
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidenav_image {
+        width: 100%;
+        height: 150px;
+        border: 2px solid #333;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sidenav nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidenav a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+      }
+
+      .right_content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .protfolio_section {
+        border: 2px solid #333;
+        padding: 20px;
+        background-color: white;
+      }
+
+      .protfolio_section h2 {
+        margin-top: 0;
+        text-transform: capitalize;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+
+      .tab_btn {
+        flex: 1;
+        padding: 10px 0;
+        border: 1px solid #000;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .image_gallery {
+        display: flex;
+        gap: 15px;
+      }
+
+      .gallery_placeholder {
+        flex: 1;
+        height: 150px;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #666;
+      }
+
+      .contact_section {
+        border: 2px solid #000;
+        padding: 20px;
+        background-color: white;
+      }
+
+      .contact_section h2 {
+        margin-top: 0;
+        text-transform: capitalize;
+      }
+
+      .contact_content_wrapper {
+        display: flex;
+        gap: 20px;
+      }
+
+      .contact_list {
+        list-style: square;
+        padding-left: 20px;
+        margin-top: 0;
+        width: 150px;
+        font-size: 20px;
+      }
+
+      .contact_list li {
+        margin-bottom: 10px;
+      }
+
+      .contact_form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form_row {
+        display: flex;
+        gap: 20px;
+      }
+
+      .form_row input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #000;
+      }
+
+      .form_message {
+        width: 100%;
+        height: 80px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      .btn_send {
+        background-color: red;
+        color: white;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        align-self: flex-start;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_container">
+      <aside class="sidenav">
+        <div class="sidenav_image"><img src="" alt="sidenav image" /></div>
+        <nav>
+          <a href="">Home</a>
+          <a href="">Name</a>
+          <a href="">Book</a>
+          <a href="">Services</a>
+        </nav>
+      </aside>
+
+      <main class="right_content">
+        <section class="protfolio_section">
+          <h2>Protfolio</h2>
+          <div class="tabs">
+            <div class="tab_btn">All</div>
+            <div class="tab_btn">Book</div>
+            <div class="tab_btn">Pen</div>
+            <div class="tab_btn">Note</div>
+          </div>
+
+          <div class="image_gallery">
+            <div class="gallery_placeholder">
+              <img src="" alt="galleryimage1" />
+            </div>
+            <div class="gallery_placeholder">
+              <img src="" alt="galleryimage2" />
+            </div>
+          </div>
+        </section>
+
+        <section class="contact_section">
+          <h2>Contact</h2>
+          <div class="contact_content_wrapper">
+            <ul class="contact_list">
+              <li>New</li>
+              <li>ID</li>
+              <li>Batch</li>
+              <li>Section</li>
+            </ul>
+            <form action="#" class="contact_form">
+              <div class="form_row">
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+              </div>
+              <div class="form_row">
+                <input type="number" placeholder="Mobile" />
+                <input type="text" placeholder="class" />
+              </div>
+              <textarea placeholder="message" class="form_message"></textarea>
+              <button type="button" class="btn_send">send message</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
