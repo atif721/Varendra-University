@@ -1,51 +1,128 @@
 # SJF (Non-Preemptive) Scheduling
+
+processes = []
+
 n = int(input("Enter number of processes: "))
-procs = []
+
 for i in range(1, n + 1):
     pid = input(f"\nEnter Process ID {i}: ")
-    procs.append([pid, int(input("Arrival Time: ")),
-                  int(input("Burst Time: "))])
+    at = int(input("Arrival Time: "))
+    bt = int(input("Burst Time: "))
 
-
-def line(k=20): return print("-" * k)
-
+    processes.append([pid, at, bt])
 
 print("\n\nProcess List")
-line()
+print("-" * 30)
 print("PID\tAT\tBT")
-line()
-for p in procs:
-    print(*p, sep="\t")
-line()
+print("-" * 30)
 
-pending = sorted(procs, key=lambda x: x[1])
-t, result = 0, []
-while pending:
-    avail = [p for p in pending if p[1] <= t]
-    if not avail:
-        t = pending[0][1]
-        continue
-    p = min(avail, key=lambda x: x[2])
-    pending.remove(p)
-    pid, at, bt = p
-    ct = t + bt
-    result.append([pid, at, bt, t, ct, ct - at, ct - at - bt])
-    t = ct
+for p in processes:
+print(f"{p[0]}\t{p[1]}\t{p[2]}")
+
+print("-" * 30)
+
+processes.sort(key=lambda x: x[1])
+
+current_time = 0
+completed = 0
+
+total_wt = 0
+total_tat = 0
+
+result = []
+gantt = []
+
+while completed < n:
+    available = []
+
+for p in processes:
+if p[1] <= current_time and p not in [r[:3] for r in result]:
+            available.append(p)
+
+if not available:
+        current_time = min(
+            p[1] for p in processes
+if p not in [r[:3] for r in result]
+)
+continue
+
+    selected = min(available, key=lambda x: x[2])
+
+    pid = selected[0]
+    at = selected[1]
+    bt = selected[2]
+
+    start_time = current_time
+    ct = start_time + bt
+
+    tat = ct - at
+    wt = tat - bt
+
+    result.append([
+        pid, at, bt,
+        start_time, ct,
+        tat, wt
+])
+
+    gantt.append([
+        pid, start_time, ct
+])
+
+    current_time = ct
+
+    total_wt += wt
+    total_tat += tat
+
+    completed += 1
 
 print("\n\nSJF (Non-Preemptive) Scheduling Table")
-line(55)
+print("-" * 70)
+
 print("PID\tAT\tBT\tST\tCT\tTAT\tWT")
-line(55)
-for r in result:
-    print(*r, sep="\t")
-line(55)
+print("-" * 70)
 
-print(f"\nAverage Waiting Time    : {sum(r[6] for r in result) / n:.2f}")
-print(f"Average Turnaround Time : {sum(r[5] for r in result) / n:.2f}")
+for p in result:
+print(
+f"{p[0]}\t{p[1]}\t{p[2]}\t"
+f"{p[3]}\t{p[4]}\t{p[5]}\t{p[6]}"
+)
 
-bar = " " + "-------" * n
+print("-" * 70)
+
+avg_wt = total_wt / n
+avg_tat = total_tat / n
+
+print(f"\nAverage Waiting Time    : {avg_wt:.2f}")
+print(f"Average Turnaround Time : {avg_tat:.2f}")
+
 print("\n\nGantt Chart")
-print(bar)
-print("|" + "".join(f"  {r[0]}  |" for r in result))
-print(bar)
-print(f"{result[0][3]}" + "".join(f"{r[4]:>7}" for r in result))
+print(" ", end="")
+
+for p in gantt:
+print("-------", end="")
+
+print()
+
+print("|", end="")
+
+for p in gantt:
+print(f"  {p[0]}  |", end="")
+
+print()
+
+print(" ", end="")
+
+for p in gantt:
+print("-------", end="")
+
+print()
+
+print(f"{gantt[0][1]}", end="")
+
+for p in gantt:
+print(f"{p[2]:>7}", end="")
+
+print()
+
+
+can you minimize this code without removing any feature of it
