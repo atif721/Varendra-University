@@ -34,7 +34,6 @@ while len(completed) < len(processes):
     gantt.append((pid, start, time))
 
 # metrics
-print("\n")
 total_tat = total_wt = 0
 print("\nP\tAT\tBT\tPR\tCT\tTAT\tWT")
 for p in processes:
