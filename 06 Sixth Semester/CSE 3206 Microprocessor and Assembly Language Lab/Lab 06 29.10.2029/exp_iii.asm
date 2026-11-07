@@ -17,22 +17,11 @@ main proc
     
     loop2:
     int 21h  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     loop loop2:
     
     exit:
     mov ah,4ch
     int 21h   
     main endp
-end main                      
+end main
+                    
