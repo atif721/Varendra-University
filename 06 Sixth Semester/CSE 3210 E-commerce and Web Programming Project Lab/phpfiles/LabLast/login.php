@@ -25,7 +25,6 @@ if (isset($_POST['login'])) {
 
         if (mysqli_num_rows($result) > 0) {
             $_SESSION['user_id'] = $uname;
-            $_SESSION['message'] = "Aj keo nai boleehhhhhhh";
             header("Location: student_info.php");
             exit;
         } else {
