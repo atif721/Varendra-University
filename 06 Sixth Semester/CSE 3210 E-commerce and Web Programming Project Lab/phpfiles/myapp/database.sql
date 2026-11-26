@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS myapp_db;
-USE myapp_db;
+CREATE DATABASE IF NOT EXISTS myappdb;
+USE myappdb;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Default test account: admin / 123456
-INSERT INTO users (username, password) VALUES ('admin', MD5('123456'));
+INSERT INTO users (username, password) VALUES ('admin', MD5('123'));
